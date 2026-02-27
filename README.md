@@ -47,8 +47,8 @@ Sans ces variables, le formulaire ouvre l'email client (`mailto`) avec les infor
 Si IONOS affiche `workflow configuration missing`, ce repo contient maintenant les workflows attendus:
 
 - `.github/workflows/deploy-to-ionos.yaml`
-- `.github/workflows/natureleag82-build.yaml`
-- `.github/workflows/natureleag82-orchestration.yaml`
+- `.github/workflows/natureelag82-build.yaml`
+- `.github/workflows/natureelag82-orchestration.yaml`
 
 Secrets GitHub requis pour le deploiement IONOS:
 

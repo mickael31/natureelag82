@@ -19,7 +19,7 @@ env:
 jobs:
   # Please do not rename this job
   build-project:
-    name: build natureleag82
+    name: build natureelag82
     runs-on: ubuntu-latest
     steps:
       - name: checkout
