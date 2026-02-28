@@ -1,6 +1,6 @@
-# Natur'Elag82 - Refonte React + Vite + TypeScript + Tailwind
+# Natur'Elag82 - React + Vite + TypeScript + Tailwind
 
-Refonte complète du site vitrine Natur'Elag82 avec architecture SPA statique, design mobile-first, SEO local et intégration locale des images du site source.
+Refonte complete du site vitrine Natur'Elag82 avec architecture SPA statique, design mobile-first, SEO local, et assets images integres localement.
 
 ## Stack
 
@@ -28,7 +28,7 @@ docs/
 assets-manifest.json
 ```
 
-## Prérequis
+## Prerequis
 
 - Node.js 20+
 - npm 10+
@@ -39,23 +39,23 @@ assets-manifest.json
 npm install
 ```
 
-## Récupération des assets visuels
+## Recuperation des assets visuels
 
-Le manifest `assets-manifest.json` contient les URLs sources vérifiées et les chemins locaux cibles.
+Le manifest `assets-manifest.json` contient les URLs source verifiees et les chemins locaux cibles.
 
 ```bash
 npm run fetch:assets
 ```
 
-Ce script télécharge les images dans `public/images/**` avec les noms stabilisés.
+Le script telecharge les images dans `public/images/**` avec des noms stables.
 
-## Développement local
+## Developpement local
 
 ```bash
 npm run dev
 ```
 
-## Vérifications
+## Verifications
 
 ```bash
 npm run typecheck
@@ -67,8 +67,8 @@ npm run build
 
 Le site fonctionne sans backend Node.
 
-- Mode 1: EmailJS (si variables configurées)
-- Mode 2: fallback `mailto:` (si EmailJS non configuré)
+- Mode 1: EmailJS (si variables configurees)
+- Mode 2: fallback `mailto:` (si EmailJS n'est pas configure)
 
 Copier `.env.example` vers `.env` puis renseigner:
 
@@ -79,30 +79,56 @@ VITE_EMAILJS_SERVICE_ID=
 VITE_EMAILJS_TEMPLATE_ID=
 ```
 
-Si ces variables sont absentes, le formulaire ouvre le client email avec un message prérempli.
+Si ces variables sont absentes, le formulaire ouvre le client email avec un message pre-rempli.
 
-## Déploiement IONOS Deploy Now (statique / SPA)
+## Deploiement IONOS Deploy Now (GitHub Actions)
 
-1. Configurer la commande de build: `npm run build`
-2. Configurer le dossier de publication: `dist`
-3. Vérifier que le fichier `public/.htaccess` est bien embarqué pour le fallback SPA Apache.
+Workflows versionnes:
 
-Le fallback permet d'éviter les erreurs 404 sur rafraîchissement d'URL SPA.
+- `.github/workflows/natureelag82-orchestration.yaml`
+- `.github/workflows/natureelag82-build.yaml`
+- `.github/workflows/deploy-to-ionos.yaml`
 
-## SEO local intégré
+### Configuration GitHub requise
 
-- balises meta title/description
+Configurer dans `Settings > Secrets and variables > Actions`:
+
+- Variable repository:
+  - `IONOS_PROJECT_ID`
+- Secrets repository:
+  - `IONOS_API_KEY`
+  - `IONOS_SSH_KEY`
+
+Le workflow `check readiness` echoue volontairement (`exit 1`) si un de ces parametres est absent.
+
+### Procedure de verification rapide
+
+1. Ouvrir l'onglet `Actions`.
+2. Lancer `Deploy Now: Orchestration` via `Run workflow`.
+3. Verifier:
+   - Si variable/secrets manquants: echec explicite avec message `Missing IONOS_*`.
+   - Si tout est configure: `check readiness` passe, puis `build` demarre.
+
+### Parametres build/deploy
+
+- Build command: `npm run build`
+- Output folder: `dist`
+- SPA fallback: `public/.htaccess` (copie dans `dist/.htaccess`)
+
+## SEO local integre
+
+- meta title/description
 - Open Graph
-- Twitter card
+- Twitter Card
 - canonical
-- schema.org `ProfessionalService` injecté en JSON-LD
+- schema.org `ProfessionalService` en JSON-LD
 
 ## Inventaire des images
 
-- Inventaire détaillé: `docs/assets-inventory.md`
-- Données typées utilisées dans le code: `src/data/assets.ts`
+- Inventaire detaille: `docs/assets-inventory.md`
+- Mapping type dans l'app: `src/data/assets.ts`
 
 ## Notes
 
-- Aucun avis client fictif n'est ajouté.
-- Les contenus non confirmés doivent être explicitement marqués "à confirmer".
+- Aucun avis client fictif n'est ajoute.
+- Les contenus non confirmes doivent etre marques `a confirmer`.
