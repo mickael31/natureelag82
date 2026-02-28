@@ -1,0 +1,82 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700;800&family=Oswald:wght@400;500;600;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply min-h-screen bg-charcoal-900 font-body text-sand-100 antialiased;
+    background-image:
+      radial-gradient(circle at 8% -8%, rgba(79, 158, 110, 0.26), transparent 36%),
+      radial-gradient(circle at 88% 5%, rgba(210, 185, 133, 0.16), transparent 28%),
+      linear-gradient(180deg, #161c1a 0%, #1b2320 48%, #161c1a 100%);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-display tracking-wide;
+  }
+
+  a {
+    @apply transition-colors duration-200;
+  }
+
+  :focus-visible {
+    outline: 2px solid #83bd99;
+    outline-offset: 3px;
+  }
+}
+
+@layer components {
+  .site-container {
+    @apply mx-auto w-[min(1160px,92%)];
+  }
+
+  .section-tag {
+    @apply inline-flex rounded-full border border-pine-200/30 bg-pine-900/45 px-4 py-1 text-xs font-bold uppercase tracking-[0.2em] text-pine-100;
+  }
+
+  .section-title {
+    @apply text-3xl uppercase leading-tight text-sand-100 sm:text-4xl lg:text-5xl;
+  }
+
+  .glass-panel {
+    @apply rounded-3xl border border-pine-200/20 bg-charcoal-900/70 shadow-[0_16px_36px_rgba(0,0,0,0.3)] backdrop-blur;
+  }
+
+  .texture-overlay {
+    background-image: radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.08) 1px, transparent 0);
+    background-size: 24px 24px;
+  }
+
+  .skip-link {
+    @apply absolute left-2 top-2 z-[60] -translate-y-24 rounded-md bg-pine-200 px-3 py-2 text-sm font-bold text-charcoal-900 transition-transform;
+  }
+
+  .skip-link:focus {
+    @apply translate-y-0;
+  }
+
+  .contact-line {
+    @apply inline-flex items-center gap-2 text-sm text-sand-100/90;
+  }
+
+  .form-label {
+    @apply flex flex-col gap-2 text-sm font-bold text-sand-100;
+  }
+
+  .form-input {
+    @apply w-full rounded-xl border border-pine-200/25 bg-charcoal-900/65 px-4 py-3 text-sm text-sand-100 placeholder:text-sand-100/45;
+  }
+
+  .form-input:focus {
+    @apply border-pine-300/60 outline-none ring-2 ring-pine-300/30;
+  }
+}

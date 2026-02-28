@@ -1,0 +1,102 @@
+{
+  "generatedAt": "2026-02-28",
+  "sourceSite": "https://natur-elag82.fr",
+  "assets": [
+    {
+      "id": "favicon",
+      "fileName": "favicon-natur-elag82.png",
+      "localPath": "public/images/branding/favicon-natur-elag82.png",
+      "publicPath": "/images/branding/favicon-natur-elag82.png",
+      "sourceUrl": "https://natur-elag82.fr/public/uploads/favicon/favicon_1771765695_b506b8ad.png",
+      "usage": "Favicon du site",
+      "alt": "Logo Natur'Elag82",
+      "width": 1024,
+      "height": 1024,
+      "status": "confirmed"
+    },
+    {
+      "id": "hero-background",
+      "fileName": "hero-elagage-montauban.png",
+      "localPath": "public/images/hero/hero-elagage-montauban.png",
+      "publicPath": "/images/hero/hero-elagage-montauban.png",
+      "sourceUrl": "https://natur-elag82.fr/public/uploads/hero/hero_arbor_bg.png",
+      "usage": "Visuel hero principal et image Open Graph",
+      "alt": "Intervention d'élagage à Montauban",
+      "width": 640,
+      "height": 640,
+      "status": "confirmed"
+    },
+    {
+      "id": "hero-logo",
+      "fileName": "logo-natur-elag82.png",
+      "localPath": "public/images/branding/logo-natur-elag82.png",
+      "publicPath": "/images/branding/logo-natur-elag82.png",
+      "sourceUrl": "https://natur-elag82.fr/public/uploads/hero/hero_logo_1771789291_3fd33ea2.png",
+      "usage": "Logo affiché dans la section hero",
+      "alt": "Logo Natur'Elag82",
+      "width": 503,
+      "height": 496,
+      "status": "confirmed"
+    },
+    {
+      "id": "service-pruning",
+      "fileName": "service-elagage-arbres.png",
+      "localPath": "public/images/services/service-elagage-arbres.png",
+      "publicPath": "/images/services/service-elagage-arbres.png",
+      "sourceUrl": "https://natur-elag82.fr/public/uploads/services/service_pruning.png",
+      "usage": "Illustration service élagage",
+      "alt": "Élagage d'arbres en sécurité",
+      "width": 640,
+      "height": 640,
+      "status": "confirmed"
+    },
+    {
+      "id": "service-felling",
+      "fileName": "service-abattage-etetage.png",
+      "localPath": "public/images/services/service-abattage-etetage.png",
+      "publicPath": "/images/services/service-abattage-etetage.png",
+      "sourceUrl": "https://natur-elag82.fr/public/uploads/services/service_felling.png",
+      "usage": "Illustration service abattage et étêtage",
+      "alt": "Abattage et étêtage d'arbres",
+      "width": 640,
+      "height": 640,
+      "status": "confirmed"
+    },
+    {
+      "id": "service-dumpster",
+      "fileName": "service-location-bennes.png",
+      "localPath": "public/images/services/service-location-bennes.png",
+      "publicPath": "/images/services/service-location-bennes.png",
+      "sourceUrl": "https://natur-elag82.fr/public/uploads/services/service_dumpster.png",
+      "usage": "Illustration service location de bennes",
+      "alt": "Location de bennes pour chantier",
+      "width": 640,
+      "height": 640,
+      "status": "confirmed"
+    },
+    {
+      "id": "service-masonry",
+      "fileName": "service-maconnerie.png",
+      "localPath": "public/images/services/service-maconnerie.png",
+      "publicPath": "/images/services/service-maconnerie.png",
+      "sourceUrl": "https://natur-elag82.fr/public/uploads/services/service_masonry.png",
+      "usage": "Illustration service petits travaux de maçonnerie",
+      "alt": "Petits travaux de maçonnerie extérieure",
+      "width": 640,
+      "height": 640,
+      "status": "confirmed"
+    },
+    {
+      "id": "service-maintenance",
+      "fileName": "service-entretien-espaces-verts.png",
+      "localPath": "public/images/services/service-entretien-espaces-verts.png",
+      "publicPath": "/images/services/service-entretien-espaces-verts.png",
+      "sourceUrl": "https://natur-elag82.fr/public/uploads/services/service_maintenance.png",
+      "usage": "Illustration service entretien d'espaces verts",
+      "alt": "Entretien d'espaces verts",
+      "width": 640,
+      "height": 640,
+      "status": "confirmed"
+    }
+  ]
+}

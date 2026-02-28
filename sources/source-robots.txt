@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-Sitemap: https://natur-elag82.fr/sitemap.xml
-

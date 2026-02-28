@@ -1,57 +1,108 @@
-# Natur'Elag82 React
+# Natur'Elag82 - Refonte React + Vite + TypeScript + Tailwind
 
-Refonte React/Vite du site `natur-elag82.fr` dans le dossier `nature_elag82`.
+Refonte complète du site vitrine Natur'Elag82 avec architecture SPA statique, design mobile-first, SEO local et intégration locale des images du site source.
 
-## Contenu
+## Stack
 
-- Site one-page moderne (hero, services, process, zone, galerie, contact)
-- Photos récupérées depuis le site source dans `public/source-assets/public/uploads/...`
-- Formulaire React avec message dynamique
-- Envoi EmailJS optionnel (fallback `mailto:` si non configuré)
+- React
+- Vite
+- TypeScript
+- Tailwind CSS
+- lucide-react
+- EmailJS (optionnel)
+
+## Structure principale
+
+```text
+src/
+  components/
+  data/
+  lib/
+  types/
+public/
+  images/
+scripts/
+  fetch-assets.mjs
+docs/
+  assets-inventory.md
+assets-manifest.json
+```
+
+## Prérequis
+
+- Node.js 20+
+- npm 10+
 
 ## Installation
 
 ```bash
-cd nature_elag82
 npm install
 ```
 
-## Lancer en local
+## Récupération des assets visuels
+
+Le manifest `assets-manifest.json` contient les URLs sources vérifiées et les chemins locaux cibles.
+
+```bash
+npm run fetch:assets
+```
+
+Ce script télécharge les images dans `public/images/**` avec les noms stabilisés.
+
+## Développement local
 
 ```bash
 npm run dev
 ```
 
-## Build
+## Vérifications
 
 ```bash
+npm run typecheck
+npm run lint
 npm run build
 ```
 
-Important pour IONOS: publie le contenu de `dist/` a la racine du site.
-Si `index.html` se retrouve dans `dist/index.html` sur le serveur (au lieu de la racine), Apache peut renvoyer `403 Forbidden`.
+## Formulaire de contact (statique)
 
-## Config EmailJS (optionnel)
+Le site fonctionne sans backend Node.
 
-Copier `.env.example` vers `.env` et renseigner:
+- Mode 1: EmailJS (si variables configurées)
+- Mode 2: fallback `mailto:` (si EmailJS non configuré)
 
-- `VITE_EMAILJS_ENABLED=true`
-- `VITE_EMAILJS_PUBLIC_KEY`
-- `VITE_EMAILJS_SERVICE_ID`
-- `VITE_EMAILJS_TEMPLATE_ID`
+Copier `.env.example` vers `.env` puis renseigner:
 
-Sans ces variables, le formulaire ouvre l'email client (`mailto`) avec les informations préremplies.
+```bash
+VITE_EMAILJS_ENABLED=true
+VITE_EMAILJS_PUBLIC_KEY=
+VITE_EMAILJS_SERVICE_ID=
+VITE_EMAILJS_TEMPLATE_ID=
+```
 
-## IONOS Deploy Now
+Si ces variables sont absentes, le formulaire ouvre le client email avec un message prérempli.
 
-Si IONOS affiche `workflow configuration missing`, ce repo contient maintenant les workflows attendus:
+## Déploiement IONOS Deploy Now (statique / SPA)
 
-- `.github/workflows/deploy-to-ionos.yaml`
-- `.github/workflows/natureelag82-build.yaml`
-- `.github/workflows/natureelag82-orchestration.yaml`
+1. Configurer la commande de build: `npm run build`
+2. Configurer le dossier de publication: `dist`
+3. Vérifier que le fichier `public/.htaccess` est bien embarqué pour le fallback SPA Apache.
 
-Secrets GitHub requis pour le deploiement IONOS:
+Le fallback permet d'éviter les erreurs 404 sur rafraîchissement d'URL SPA.
 
-- `IONOS_API_KEY`
-- `IONOS_SSH_KEY`
-- `IONOS_PROJECT_ID` (secret ou variable GitHub)
+## SEO local intégré
+
+- balises meta title/description
+- Open Graph
+- Twitter card
+- canonical
+- schema.org `ProfessionalService` injecté en JSON-LD
+
+## Inventaire des images
+
+- Inventaire détaillé: `docs/assets-inventory.md`
+- Données typées utilisées dans le code: `src/data/assets.ts`
+
+## Notes
+
+- Aucun avis client fictif n'est ajouté.
+- Les contenus non confirmés doivent être explicitement marqués "à confirmer".
