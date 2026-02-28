@@ -15,16 +15,36 @@ jobs:
     name: check readiness
     runs-on: ubuntu-latest
     outputs:
+      project-id: ${{ steps.ionos-project.outputs.project-id }}
       deployment-enabled: ${{ steps.project-meta.outputs.deployment-enabled }}
       branch-id: ${{ steps.project-meta.outputs.branch-id }}
     steps:
+      - name: Resolve IONOS project id
+        id: ionos-project
+        shell: bash
+        env:
+          PROJECT_ID_SECRET: ${{ secrets.IONOS_PROJECT_ID }}
+          PROJECT_ID_VAR: ${{ vars.IONOS_PROJECT_ID }}
+        run: |
+          PROJECT_ID="$PROJECT_ID_SECRET"
+          if [ -z "$PROJECT_ID" ]; then
+            PROJECT_ID="$PROJECT_ID_VAR"
+          fi
+
+          if [ -z "$PROJECT_ID" ]; then
+            echo "::error::Missing IONOS project id. Configure IONOS_PROJECT_ID as a repository secret or variable."
+            exit 1
+          fi
+
+          echo "project-id=$PROJECT_ID" >> "$GITHUB_OUTPUT"
+
       - name: Fetch project data
         uses: ionos-deploy-now/project-action@v1
         id: project
         with:
           api-key: ${{ secrets.IONOS_API_KEY }}
           service-host: api-eu.ionos.space
-          project-id: ${{ secrets.IONOS_PROJECT_ID || vars.IONOS_PROJECT_ID }}
+          project-id: ${{ steps.ionos-project.outputs.project-id }}
           action: retrieve-info
 
       - name: Extract project metadata
@@ -51,6 +71,7 @@ jobs:
     uses: ./.github/workflows/natureelag82-build.yaml
     with:
       site-url: https://IONOS_DEPLOY_NOW_SITE_URL
+      project-id: ${{ needs.retrieve-project.outputs.project-id }}
       branch-id: ${{ needs.retrieve-project.outputs.branch-id }}
     secrets: inherit
 
@@ -66,6 +87,6 @@ jobs:
         with:
           api-key: ${{ secrets.IONOS_API_KEY }}
           service-host: api-eu.ionos.space
-          project-id: ${{ secrets.IONOS_PROJECT_ID || vars.IONOS_PROJECT_ID }}
+          project-id: ${{ needs.retrieve-project.outputs.project-id }}
           branch-id: ${{ needs.retrieve-project.outputs.branch-id }}
           action: dispatch-deployments
